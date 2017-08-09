@@ -1,0 +1,28 @@
+/*
+ *Emilio Ovalles-Misterman
+ *CS 202
+ *Assignment 09
+ */
+ 
+void bitwiseTest();
+void readStdin();
+void convertAddressToBinary();
+void checkCache();
+
+ 
+int main(int argc, char argv[])
+{
+    
+}
+
+void readTxt()
+{
+    char address[10];
+    int size = 20;
+    
+    char currentAddress[10];
+    
+    while(fgets(address, 10, stdin) != NULL) {
+    
+    }
+}
