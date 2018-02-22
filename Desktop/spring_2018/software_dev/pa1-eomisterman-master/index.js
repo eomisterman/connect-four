@@ -28,8 +28,6 @@ const howFalse = function howFalse(a) {
     console.log(falsyDict);
 }
 
-howFalse([5, 0, 42, 'dalek', 3-3, 7, Math.sqrt(-1)]);
-
 
 
 const myMin = function myMin() {
@@ -50,9 +48,6 @@ const myMin = function myMin() {
     return _min;
 }
 
-console.log(myMin(5,4,6,2,8,1));
-
-
 
 console.log([5, 3 ,5 ,9, 2, 1].reduce(function reduceMax(accumulator, current) {
     // if new value is greater, return value -> will be accumulator for next
@@ -63,14 +58,6 @@ console.log([5, 3 ,5 ,9, 2, 1].reduce(function reduceMax(accumulator, current) {
         return accumulator;
     }
 }));
-
-
-// function for visualizing 2darray
-function visualize(ddarr) {
-    for(let i=0; i<ddarr.length; i++) {
-        console.log(ddarr[i]);
-    }
-}
 
 
 
@@ -93,9 +80,6 @@ const largestCommonSubstring = function largestCommonSubstring(str1, str2) {
             arr[i].push(current);
         }
     }
-
-    // prints 2d array table
-    visualize(arr);
 
     let h = str1.length;
     let w = str2.length;
@@ -125,14 +109,13 @@ const largestCommonSubstring = function largestCommonSubstring(str1, str2) {
 
 }
 
-console.log(largestCommonSubstring("thisisatest", "testing123testing"));
-
 
 
 function forDemo(_iterable) {
-console.log("INPUT:");
-console.log(_iterable);
-console.log("\n");
+    // formatting
+    console.log("INPUT:");
+    console.log(_iterable);
+    console.log("\n");
 
     console.log("*** For-in loop beginning ***");
     for(let i in _iterable) {
@@ -149,9 +132,6 @@ console.log("\n");
     console.log("*** End of for-of loop ***")
 
 }
-
-çforDemo([6,32,15,99,'a']);
-
 
 
 
