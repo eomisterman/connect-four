@@ -1,4 +1,6 @@
-// TODO: Add your JavaScript functions
+// index.js
+// emilio ovalles-misterman
+// assignment 1
 
 
 
@@ -45,14 +47,16 @@ const myMin = function myMin() {
         }
     }
 
-    console.log(_min);
+    return _min;
 }
 
-myMin(5,4,6,2,8,1);
+console.log(myMin(5,4,6,2,8,1));
 
 
 
 console.log([5, 3 ,5 ,9, 2, 1].reduce(function reduceMax(accumulator, current) {
+    // if new value is greater, return value -> will be accumulator for next
+    //reduce call. else, accumulator is returned
     if(current > accumulator) {
         return current;
     } else {
@@ -61,34 +65,92 @@ console.log([5, 3 ,5 ,9, 2, 1].reduce(function reduceMax(accumulator, current) {
 }));
 
 
+// function for visualizing 2darray
+function visualize(ddarr) {
+    for(let i=0; i<ddarr.length; i++) {
+        console.log(ddarr[i]);
+    }
+}
 
-const createArray = function createArray(_array) {
-    if(arguments.length < 1 || arguments.length > 2) {
-        return -1;
-    }
-    else if(arguments.length === 1) {
-        return new Array(arguments[0]);
-    }
-    else {
-        const ddarr = new Array(arguments[0]);
-        let i;
-        for(i = 0; i<ddarr.length; i++) {
-            ddarr[i] = new Array(arguments[1]);
+
+
+const largestCommonSubstring = function largestCommonSubstring(str1, str2) {
+    let arr = [];
+
+    // initialize 2d array with values
+    for(let i=0; i<=str1.length; i++) {
+        arr.push([]);
+
+        for(let k=0; k<=str2.length; k++) {
+            let current = 0;
+            if(i === 0 || k === 0) {
+                current = 0;
+            } else if(str1.charAt(i-1) === str2.charAt(k-1)) {
+                current = arr[i-1][k-1] + 1;
+            } else {
+                current = Math.max(arr[i-1][k], arr[i][k-1]);
+            }
+            arr[i].push(current);
         }
-        return ddarr;
     }
+
+    // prints 2d array table
+    visualize(arr);
+
+    let h = str1.length;
+    let w = str2.length;
+    let result = "";
+
+    // work way back through array to find lcs
+    // used link below as reference for lcs algorithm
+    // https://gist.github.com/alexishacks/725df6db4432cd29cd43
+    while(arr[h][w] > 0) {
+        if(str1.charAt(h-1) === str2.charAt(w-1) &&
+         (arr[h-1][w-1]+1 === arr[h][w])) 
+        {
+            result = str1.charAt(h-1) + result;
+            h--;
+            w--;
+        } 
+        else if(arr[h-1][w] > arr[h][w-1]) 
+        {
+            h--;
+        } 
+        else 
+        {
+            w--;
+        }
+    }
+    return result;
+
 }
 
-console.log(createArray(3));
-const test = createArray(3);
-for( let i=0; i<test.length; i++) {
-    test[i] = i;
+console.log(largestCommonSubstring("thisisatest", "testing123testing"));
+
+
+
+function forDemo(_iterable) {
+console.log("INPUT:");
+console.log(_iterable);
+console.log("\n");
+
+    console.log("*** For-in loop beginning ***");
+    for(let i in _iterable) {
+        console.log("      Current value: " + i);
+    }
+    console.log("*** End of for-in loop ***")
+
+    console.log("\n");
+
+    console.log("*** For-of loop beginning ***");
+    for(let k of _iterable) {
+        console.log("      Current value: " + k);
+    }
+    console.log("*** End of for-of loop ***")
+
 }
-console.log(test);
 
-
-
-
+forDemo([6,32,15,99,'a']);
 
 
 
